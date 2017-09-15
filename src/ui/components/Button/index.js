@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, TouchableOpacity } from 'react-native'
+import { View, TouchableOpacity, Text } from 'react-native'
 
 import colors from '~/src/constants/color'
 
@@ -10,12 +10,13 @@ export default class HarmonyBtn extends Component {
   static defaultProps = {
     backgroundColor: colors.mainColor,
     borderColor: colors.mainColor,
+    color: '#fff',
     onPress: emptyFn,
 
   }
 
   render () {
-    const { onPress, backgroundColor, rounded, borderColor, style } = this.props
+    const { onPress, backgroundColor, rounded, borderColor, style, color } = this.props
     return (
       <TouchableOpacity
         activeOpacity={0.8}
@@ -23,15 +24,15 @@ export default class HarmonyBtn extends Component {
       >
         <View
           style={{
-            backgroundColor,
             alignItems: 'center',
             borderRadius: rounded ? 50 : 0,
-            borderColor,
             padding: 10,
+            backgroundColor,
+            borderColor,
             ...style,
           }}
         >
-          { this.props.children }
+          <Text style={{ color }}>{ this.props.children }</Text>
         </View>
       </TouchableOpacity>
     )
